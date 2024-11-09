@@ -1,4 +1,3 @@
-import { useState } from "react";
 import {
   motion,
   useScroll,
@@ -6,8 +5,9 @@ import {
   useTransform,
   useVelocity,
 } from "framer-motion";
+import { useActiveLink } from "../hooks/useActiveLinks";
 
-type ActiveLinks = "about" | "projects" | "contact";
+export type ActiveLinks = "about" | "projects" | "contact";
 
 type NavLinks = {
   id: ActiveLinks;
@@ -34,7 +34,7 @@ const navLinks: NavLinks[] = [
 ];
 
 export default function NavBar() {
-  const [activeLink, setActiveLink] = useState<ActiveLinks>("about");
+  const { activeLink } = useActiveLink();
 
   // get scroll position on the Y axis
   const { scrollY } = useScroll();
@@ -61,7 +61,6 @@ export default function NavBar() {
             key={key}
             href={link.href}
             className="relative rounded-full py-2 md:py-3 px-5 active:text-gray-500 md:hover:text-gray-500 transition-colors"
-            onClick={() => setActiveLink(link.id)}
           >
             {activeLink === link.id && (
               <motion.div

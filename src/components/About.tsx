@@ -1,8 +1,22 @@
+import { useInView } from "framer-motion";
 import Container from "./Container";
+import { useActiveLink } from "../hooks/useActiveLinks";
+import { useEffect, useRef } from "react";
 
 export default function About() {
+  const aboutRef = useRef(null);
+  const isInView = useInView(aboutRef, { margin: "-50%" });
+
+  const { setActiveLink } = useActiveLink();
+
+  useEffect(() => {
+    if (isInView) {
+      setActiveLink!("about");
+    }
+  }, [isInView, setActiveLink]);
+
   return (
-    <Container id="about">
+    <Container ref={aboutRef} id="about">
       <div className="flex flex-col gap-1 w-full min-h-[inherit] justify-center">
         <h3 className="text-4xl font-bold text-gray-500">Kevin k Noel</h3>
 
