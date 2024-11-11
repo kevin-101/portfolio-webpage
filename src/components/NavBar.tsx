@@ -40,13 +40,13 @@ export default function NavBar() {
   const { scrollY } = useScroll();
 
   // smoothing the Y value
-  const smoothScrollY = useSpring(scrollY);
+  const smoothScrollY = useSpring(scrollY, { stiffness: 80, damping: 20 });
 
   // get the velocity at which scrollY changes
   const scrollYVelocity = useVelocity(smoothScrollY);
 
   // use the velocity to get new Y value for nav
-  const y = useTransform(scrollYVelocity, [-2000, 2000], [5, -5], {
+  const y = useTransform(scrollYVelocity, [-2000, 2000], [10, -10], {
     clamp: false,
   });
 
