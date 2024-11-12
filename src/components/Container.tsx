@@ -1,6 +1,6 @@
 import { forwardRef } from "react";
 
-type ContainerProps = { children: React.ReactNode; id: string };
+type ContainerProps = { children: React.ReactNode; id?: string };
 
 const Container = forwardRef<HTMLElement, ContainerProps>(
   ({ children, id }, ref) => {
