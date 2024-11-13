@@ -6,7 +6,7 @@ import {
   Variants,
 } from "framer-motion";
 import Container from "./Container";
-import { useActiveLink } from "../hooks/useActiveLinks";
+import { useActiveLink } from "../hooks/useActiveLink";
 import { useEffect, useRef } from "react";
 
 const heroVariants: Variants = {

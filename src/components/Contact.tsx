@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import Container from "./Container";
-import { useActiveLink } from "../hooks/useActiveLinks";
+import { useActiveLink } from "../hooks/useActiveLink";
 import { useInView } from "framer-motion";
 
 export default function Contact() {

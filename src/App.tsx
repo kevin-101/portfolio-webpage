@@ -1,17 +1,17 @@
-import ActiveLinksProvider from "./components/ActiveLinksProvider";
+import ActiveLinkProvider from "./components/ActiveLinkProvider";
 import Footer from "./components/Footer";
 import MainContent from "./components/MainContent";
 import NavBar from "./components/NavBar";
 
 function App() {
   return (
-    <ActiveLinksProvider>
+    <ActiveLinkProvider>
       <NavBar />
 
       <MainContent />
 
       <Footer />
-    </ActiveLinksProvider>
+    </ActiveLinkProvider>
   );
 }
 

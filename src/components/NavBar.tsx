@@ -5,17 +5,9 @@ import {
   useTransform,
   useVelocity,
 } from "framer-motion";
-import { useActiveLink } from "../hooks/useActiveLinks";
+import { useActiveLink } from "../hooks/useActiveLink";
 
-export type ActiveLinks = "about" | "projects" | "contact";
-
-type NavLinks = {
-  id: ActiveLinks;
-  href: string;
-  name: string;
-};
-
-const navLinks: NavLinks[] = [
+const navLinks = [
   {
     id: "about",
     href: "#about",
@@ -31,7 +23,9 @@ const navLinks: NavLinks[] = [
     href: "#contact",
     name: "Contact",
   },
-];
+] as const;
+
+export type ActiveLink = (typeof navLinks)[number]["id"];
 
 export default function NavBar() {
   const { activeLink } = useActiveLink();

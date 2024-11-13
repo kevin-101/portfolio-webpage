@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import Container from "./Container";
 import { MotionConfig, useInView } from "framer-motion";
-import { useActiveLink } from "../hooks/useActiveLinks";
+import { useActiveLink } from "../hooks/useActiveLink";
 import HoverCard from "./HoverCard";
 
 const projects = [
