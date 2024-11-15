@@ -21,11 +21,11 @@ const HoverCard = motion.create(
       return (
         <div
           ref={ref}
-          className="group relative rounded-lg border border-foreground/10"
+          className="group relative rounded-lg border-2 border-foreground/10"
           onMouseMove={handleMouseMove}
         >
           <motion.div
-            className="-z-10 absolute -inset-px rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+            className="-z-10 absolute -inset-0.5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200"
             style={{
               backgroundImage: useMotionTemplate`radial-gradient(400px circle at ${mouseX}px ${mouseY}px, rgba(255, 255, 255, 0.2), transparent 80%)`,
             }}

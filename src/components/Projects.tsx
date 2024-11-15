@@ -1,17 +1,21 @@
+import { motion, MotionConfig, useInView } from "framer-motion";
 import { useEffect, useRef } from "react";
-import Container from "./Container";
-import { MotionConfig, useInView } from "framer-motion";
 import { useActiveLink } from "../hooks/useActiveLink";
+import Container from "./Container";
 import HoverCard from "./HoverCard";
 
 const projects = [
   {
     title: "Platform for Books",
     url: "https://platform-for-books.vercel.app",
+    description:
+      "This is basically a social platform built with Next.js and Firebase that connects book lovers. Users can create profiles, browse a variety of books, and find others who have the books they're interested in. Whether you're looking to trade, borrow, or discover new reads, this app makes it easy to connect with like-minded individuals and share your passion for books.",
   },
   {
     title: "EuroTech Maritime Website",
     url: "https://eurotechmaritime.org",
+    description:
+      "This is a website for a maritime institue, built using React. It features dynamic routing with React Router for seamless navigation between pages. State management is handled efficiently with Redux, ensuring smooth data flow across the application. The project showcases the skills I've gained in building responsive, interactive web applications with modern React tools.",
   },
 ];
 
@@ -29,25 +33,38 @@ export default function Projects() {
 
   return (
     <Container ref={projectsRef} id="projects">
-      <div className="flex items-center w-full min-h-[inherit]">
-        <div className="grid grid-cols-1 w-full gap-4">
-          <MotionConfig
-            transition={{
-              type: "spring",
-              stiffness: 80,
-              damping: 20,
-            }}
+      <div className="flex flex-col justify-center gap-8 w-full min-h-[inherit]">
+        <MotionConfig
+          transition={{
+            type: "spring",
+            stiffness: 80,
+            damping: 20,
+          }}
+        >
+          <motion.h2
+            className="text-2xl font-bold ml-2"
+            initial={{ opacity: 0, y: -100 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
           >
+            My Projects:
+          </motion.h2>
+
+          <div className="grid grid-cols-1 w-full gap-4">
             {projects.map((project, i) => {
               return (
                 <HoverCard
                   key={project.title}
-                  style={{ opacity: 0, x: i % 2 === 0 ? -200 : 200 }}
+                  initial={{ opacity: 0, x: i % 2 === 0 ? -200 : 200 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                 >
-                  <div className="flex flex-col w-full gap-4 p-4">
+                  <div className="flex flex-col justify-between w-full min-h-52 gap-4 p-4">
                     <h2 className="text-xl font-bold">{project.title}</h2>
+
+                    <p className="w-full max-w-[800px]">
+                      {project.description}
+                    </p>
 
                     <a
                       href={project.url}
@@ -63,8 +80,8 @@ export default function Projects() {
                 </HoverCard>
               );
             })}
-          </MotionConfig>
-        </div>
+          </div>
+        </MotionConfig>
       </div>
     </Container>
   );
