@@ -22,20 +22,20 @@ const AuroraCard = motion.create(
       const gradientSequence: AnimationSequence = [
         [leftGradientSize, [800, 1100, 800], { ease: "easeInOut" }],
         [middleGradientSize, [800, 1000, 800], { ease: "easeInOut", at: 0.1 }],
-        [rightGradientSize, [800, 1100, 800], { ease: "easeInOut", at: 0.2 }],
+        [rightGradientSize, [800, 1100, 800], { ease: "easeInOut", at: 0.1 }],
       ];
 
       const gradientAnimation = animate(gradientSequence, {
-        duration: 2,
+        duration: 1.6,
         repeat: Infinity,
-        repeatType: "mirror",
+        repeatType: "reverse",
       });
       gradientAnimation.pause();
 
       return (
         <div
           ref={ref}
-          className="group relative rounded-lg border-2 border-foreground/10"
+          className="group relative rounded-lg border-2 border-foreground/10 cursor-pointer"
           onMouseEnter={() => gradientAnimation.play()}
           onMouseLeave={() => gradientAnimation.pause()}
         >
