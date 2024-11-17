@@ -1,8 +1,9 @@
 import { motion, useInView, Variants } from "framer-motion";
 import { useEffect, useRef } from "react";
-import GithubIcon from "../assets/github-icon.svg";
-import GmailIcon from "../assets/gmail-icon.svg";
-import LinkedInIcon from "../assets/linkedin-icon.svg";
+import githubIcon from "../assets/github-icon.svg";
+import gmailIcon from "../assets/gmail-icon.svg";
+import linkedInIcon from "../assets/linkedin-icon.svg";
+import redirectIcon from "../assets/redirect-icon.svg";
 import { useActiveLink } from "../hooks/useActiveLink";
 import AuroraCard from "./AuroraCard";
 import Container from "./Container";
@@ -11,19 +12,19 @@ const contacts = [
   {
     name: "Github",
     href: "https://github.com/kevin-101",
-    icon: GithubIcon,
+    icon: githubIcon,
     color: "rgba(255, 255, 255, 0.5)",
   },
   {
     name: "LinkedIn",
     href: "https://www.linkedin.com/in/kevin-noel-666015244/",
-    icon: LinkedInIcon,
+    icon: linkedInIcon,
     color: "rgba(0, 96, 151, 0.7)",
   },
   {
     name: "Email",
     href: "mailto:kevinknoel7@gmail.com",
-    icon: GmailIcon,
+    icon: gmailIcon,
     color: "rgba(219, 68, 55, 0.7)",
   },
 ];
@@ -103,7 +104,7 @@ export default function Contact() {
                       variants={anchorVariants}
                     >
                       <img
-                        src="./src/assets/redirect-icon.svg"
+                        src={redirectIcon}
                         alt="redirect icon"
                         className="size-6"
                       />
