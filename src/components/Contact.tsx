@@ -32,7 +32,7 @@ const contacts = [
 const contactVariants: Variants = {
   hidden: (i) => ({
     opacity: 0,
-    y: i % 2 === 0 ? -200 : 200,
+    y: i % 2 === 0 ? -50 : 50,
   }),
   show: (i) => ({
     opacity: 1,
@@ -49,6 +49,7 @@ const contactVariants: Variants = {
 const anchorVariants: Variants = {
   hover: {
     scale: [1.5, 1],
+    transition: { type: "spring", stiffness: 300 },
   },
 };
 
@@ -66,7 +67,7 @@ export default function Contact() {
 
   return (
     <Container ref={contactRef} id="contact">
-      <div className="flex flex-col gap-8 w-full min-h-[inherit]">
+      <div className="flex flex-col gap-8 w-full mb-20">
         <h2 className="ml-2 text-2xl font-bold">Contact me:</h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -84,6 +85,7 @@ export default function Contact() {
                 <motion.div
                   className="flex flex-col justify-end items-center p-4 min-h-[400px]"
                   whileHover="hover"
+                  whileTap="hover"
                 >
                   <img
                     src={contact.icon}

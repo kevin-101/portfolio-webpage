@@ -1,4 +1,4 @@
-import { motion, MotionConfig, useInView } from "framer-motion";
+import { motion, MotionConfig, useInView, Variants } from "framer-motion";
 import { useEffect, useRef } from "react";
 import { useActiveLink } from "../hooks/useActiveLink";
 import Container from "./Container";
@@ -17,7 +17,23 @@ const projects = [
     description:
       "This is a website for a maritime institue, built using React. It features dynamic routing with React Router for seamless navigation between pages. State management is handled efficiently with Redux, ensuring smooth data flow across the application. The project showcases the skills I've gained in building responsive, interactive web applications with modern React tools.",
   },
+  {
+    title: "This page",
+    url: "/",
+    description: "const thisPage = () => thisPage();",
+  },
 ];
+
+const projectVariants: Variants = {
+  hidden: (i) => ({
+    opacity: 0,
+    x: i % 2 === 0 ? -200 : 200,
+  }),
+  show: {
+    opacity: 1,
+    x: 0,
+  },
+};
 
 export default function Projects() {
   const projectsRef = useRef(null);
@@ -33,7 +49,7 @@ export default function Projects() {
 
   return (
     <Container ref={projectsRef} id="projects">
-      <div className="flex flex-col justify-center gap-8 w-full min-h-[inherit]">
+      <div className="flex flex-col justify-center gap-8 mt-10 mb-20 w-full min-h-[inherit]">
         <MotionConfig
           transition={{
             type: "spring",
@@ -43,8 +59,10 @@ export default function Projects() {
         >
           <motion.h2
             className="text-2xl font-bold ml-2"
-            initial={{ opacity: 0, y: -100 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            custom={0}
+            variants={projectVariants}
+            initial="hidden"
+            whileInView="show"
             viewport={{ once: true }}
           >
             My Projects:
@@ -55,8 +73,10 @@ export default function Projects() {
               return (
                 <HoverCard
                   key={project.title}
-                  initial={{ opacity: 0, x: i % 2 === 0 ? -200 : 200 }}
-                  whileInView={{ opacity: 1, x: 0 }}
+                  custom={i + 1}
+                  variants={projectVariants}
+                  initial="hidden"
+                  whileInView="show"
                   viewport={{ once: true }}
                 >
                   <div className="flex flex-col justify-between w-full min-h-52 gap-4 p-4">

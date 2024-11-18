@@ -4,7 +4,8 @@ import Projects from "./Projects";
 
 export default function MainContent() {
   return (
-    <main>
+    // overflow-x hidden for animations to work correctly
+    <main className="overflow-x-hidden">
       <About />
 
       <Projects />
