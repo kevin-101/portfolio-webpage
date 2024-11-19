@@ -1,4 +1,4 @@
-import { motion, useInView, Variants } from "framer-motion";
+import { motion, useAnimate, useInView, Variants } from "framer-motion";
 import { useEffect, useRef } from "react";
 import githubIcon from "../assets/github-icon.svg";
 import gmailIcon from "../assets/gmail-icon.svg";
@@ -27,7 +27,7 @@ const contacts = [
     icon: gmailIcon,
     color: "rgba(219, 68, 55, 0.7)",
   },
-];
+] as const;
 
 const contactVariants: Variants = {
   hidden: (i) => ({
@@ -46,12 +46,42 @@ const contactVariants: Variants = {
   }),
 };
 
-const anchorVariants: Variants = {
-  hover: {
-    scale: [1.5, 1],
-    transition: { type: "spring", stiffness: 300 },
-  },
-};
+// abstracted for useAnimate hook scoping
+function CardContent({ contact }: { contact: (typeof contacts)[number] }) {
+  const [scope, animate] = useAnimate();
+
+  function bounce() {
+    animate("a", { scale: [1.3, 1] }, { type: "spring", stiffness: 300 });
+  }
+
+  return (
+    <motion.div
+      ref={scope}
+      className="flex flex-col justify-end items-center p-4 min-h-[400px]"
+      onHoverStart={bounce}
+      onTap={bounce}
+    >
+      <img
+        src={contact.icon}
+        alt={`${contact.name} Icon`}
+        className="size-[200px] flex-1"
+      />
+
+      <div className="flex justify-between items-center w-full">
+        <h2 className="text-lg font-bold text-start w-full">{contact.name}</h2>
+
+        <motion.a
+          href={contact.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="border-2 border-foreground/20 p-3 rounded-lg"
+        >
+          <img src={redirectIcon} alt="redirect icon" className="size-6" />
+        </motion.a>
+      </div>
+    </motion.div>
+  );
+}
 
 export default function Contact() {
   const contactRef = useRef(null);
@@ -82,37 +112,7 @@ export default function Contact() {
                 whileInView="show"
                 viewport={{ once: true }}
               >
-                <motion.div
-                  className="flex flex-col justify-end items-center p-4 min-h-[400px]"
-                  whileHover="hover"
-                  whileTap="hover"
-                >
-                  <img
-                    src={contact.icon}
-                    alt={`${contact.name} Icon`}
-                    className="size-[200px] flex-1"
-                  />
-
-                  <div className="flex justify-between w-full">
-                    <h2 className="text-lg font-bold text-start w-full">
-                      {contact.name}
-                    </h2>
-
-                    <motion.a
-                      href={contact.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="border border-foreground/20 p-3 rounded-lg"
-                      variants={anchorVariants}
-                    >
-                      <img
-                        src={redirectIcon}
-                        alt="redirect icon"
-                        className="size-6"
-                      />
-                    </motion.a>
-                  </div>
-                </motion.div>
+                <CardContent contact={contact} />
               </AuroraCard>
             );
           })}

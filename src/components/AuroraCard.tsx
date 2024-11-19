@@ -35,7 +35,7 @@ const AuroraCard = motion.create(
       return (
         <div
           ref={ref}
-          className="group relative rounded-lg border-2 border-foreground/10 cursor-pointer"
+          className="group relative rounded-lg border-2 border-foreground/10"
           onMouseEnter={() => gradientAnimation.play()}
           onMouseLeave={() => gradientAnimation.pause()}
         >

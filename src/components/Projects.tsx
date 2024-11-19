@@ -49,7 +49,7 @@ export default function Projects() {
 
   return (
     <Container ref={projectsRef} id="projects">
-      <div className="flex flex-col justify-center gap-8 mt-10 mb-20 w-full min-h-[inherit]">
+      <div className="flex flex-col justify-center gap-8 mt-5 mb-20 w-full min-h-[inherit]">
         <MotionConfig
           transition={{
             type: "spring",

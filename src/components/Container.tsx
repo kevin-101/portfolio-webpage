@@ -4,10 +4,11 @@ type ContainerProps = {
   children: React.ReactNode;
   id?: string;
   full?: boolean;
+  center?: boolean;
 };
 
 const Container = forwardRef<HTMLElement, ContainerProps>(
-  ({ children, id, full }, ref) => {
+  ({ children, id, full, center }, ref) => {
     return (
       <section
         ref={ref}
@@ -19,9 +20,13 @@ const Container = forwardRef<HTMLElement, ContainerProps>(
         {/* 100svh-100px is the min-height of the container
         and another -84px or -100px for the nav bar depending on the breakpoint,
         since the navbar is still in the normal flow of the dom */}
-        <div className="min-h-[calc((100svh-100px)-84px)] md:min-h-[calc((100svh-100px)-100px)]">
-          {children}
-        </div>
+        {center ? (
+          <div className="min-h-[calc((100svh-100px)-84px)] md:min-h-[calc((100svh-100px)-100px)]">
+            {children}
+          </div>
+        ) : (
+          children
+        )}
       </section>
     );
   }

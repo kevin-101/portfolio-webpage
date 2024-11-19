@@ -45,7 +45,7 @@ export default function About() {
   }, [isInView, setActiveLink]);
 
   return (
-    <Container ref={aboutRef} id="about" full>
+    <Container ref={aboutRef} id="about" full center>
       <div className="flex flex-col gap-10 w-full min-h-[inherit] justify-center">
         <div className="flex flex-col gap-1 w-full">
           <motion.h3
