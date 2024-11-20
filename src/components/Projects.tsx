@@ -1,5 +1,6 @@
 import { motion, MotionConfig, useInView, Variants } from "framer-motion";
 import { useEffect, useRef } from "react";
+import diagonalArrow from "../assets/diagonal-arrow-icon.svg";
 import { useActiveLink } from "../hooks/useActiveLink";
 import Container from "./Container";
 import HoverCard from "./HoverCard";
@@ -93,7 +94,11 @@ export default function Projects() {
                     >
                       Visit{" "}
                       <span className="inline-block opacity-0 -translate-x-5 group-hover:opacity-100 group-hover:translate-x-0 transition-[opacity_transform] duration-300">
-                        ↗️
+                        <img
+                          src={diagonalArrow}
+                          alt="diagonal arrow icon"
+                          className="size-3.5"
+                        />
                       </span>
                     </a>
                   </div>
