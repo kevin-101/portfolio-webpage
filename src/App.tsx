@@ -11,6 +11,16 @@ function App() {
       <MainContent />
 
       <Footer />
+
+      {/* for the background texture */}
+      <div
+        style={{
+          backgroundImage: "url(./src/assets/texture-background.png)",
+          backgroundRepeat: "repeat",
+          backgroundSize: "100px",
+        }}
+        className="fixed inset-0 pointer-events-none z-30 opacity-10"
+      />
     </ActiveLinkProvider>
   );
 }
