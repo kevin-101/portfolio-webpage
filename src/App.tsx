@@ -15,7 +15,7 @@ function App() {
       {/* for the background texture */}
       <div
         style={{
-          backgroundImage: "url(./src/assets/texture-background.png)",
+          backgroundImage: "url(/texture-background.png)",
           backgroundRepeat: "repeat",
           backgroundSize: "100px",
         }}
