@@ -55,7 +55,9 @@ export default function About() {
             initial="hidden"
             animate="slideFadeIn"
           >
-            Kevin k Noel
+            Hi I'm,
+            <br />
+            <span className="inline-block mt-1">Kevin k Noel</span>
           </motion.h3>
 
           <motion.h1
@@ -69,9 +71,7 @@ export default function About() {
             initial="hidden"
             animate="slideFadeIn"
           >
-            Frontend Developer <br /> (React/
-            <br className="min-[897px]:hidden" />
-            Next.js)
+            A React Developer
           </motion.h1>
         </div>
 
@@ -82,8 +82,8 @@ export default function About() {
           initial="hidden"
           animate="slideFadeIn"
         >
-          I'm a passionate Computer Science graduate, pursuing a career in
-          Frontend Web Development
+          I specialize in crafting scalable, user-friendly, and visually
+          appealing web applications using React.
         </motion.p>
       </div>
     </Container>
