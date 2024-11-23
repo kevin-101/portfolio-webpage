@@ -57,7 +57,7 @@ export default function About() {
           >
             Hi I'm,
             <br />
-            <span className="inline-block mt-1">Kevin k Noel</span>
+            <span className="inline-block mt-1">Kevin K Noel</span>
           </motion.h3>
 
           <motion.h1
