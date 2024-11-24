@@ -109,6 +109,7 @@ export default function Contact() {
                 variants={contactVariants}
                 custom={i}
                 initial="hidden"
+                whileTap={{ scale: 0.95 }}
                 whileInView="show"
                 viewport={{ once: true }}
               >
