@@ -36,7 +36,7 @@ export default function About() {
 
   // for the text gradient
   const { scrollY } = useScroll();
-  const bgY = useTransform(scrollY, [0, 200], [0, 300], { clamp: false });
+  const bgX = useTransform(scrollY, [0, 200], [0, 300], { clamp: false });
 
   useEffect(() => {
     if (isInView) {
@@ -64,7 +64,7 @@ export default function About() {
             className="text-6xl min-[412px]:text-7xl min-[600px]:text-8xl font-extrabold bg-clip-text text-transparent"
             style={{
               backgroundImage: `linear-gradient(to right, #3b3b3b, white 20%, #3b3b3b 95%)`,
-              backgroundPositionX: bgY,
+              backgroundPositionX: bgX,
             }}
             custom={1}
             variants={heroVariants}

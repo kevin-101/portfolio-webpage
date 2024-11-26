@@ -17,11 +17,11 @@ const Container = forwardRef<HTMLElement, ContainerProps>(
           full && "min-h-[calc(100svh-84px)] md:min-h-[calc(100svh-100px)]"
         } w-full max-w-[1300px] mx-auto px-4 scroll-m-[84px] md:scroll-m-[100px]`}
       >
-        {/* 100svh-100px is the min-height of the container
-        and another -84px or -100px for the nav bar depending on the breakpoint,
-        since the navbar is still in the normal flow of the dom */}
+        {/* 100svh-84px/100px is the min-height of the container,
+        depending on the breakpoint and you subtract the height of the navbar twice,
+        to center the div since the navbar is still in the normal flow of the dom */}
         {center ? (
-          <div className="min-h-[calc((100svh-100px)-84px)] md:min-h-[calc((100svh-100px)-100px)]">
+          <div className="min-h-[calc((100svh-(84px*2)))] md:min-h-[calc((100svh-(100px*2)))]">
             {children}
           </div>
         ) : (
