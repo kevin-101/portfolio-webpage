@@ -5,9 +5,10 @@ import {
   useTransform,
   Variants,
 } from "framer-motion";
-import Container from "./Container";
-import { useActiveLink } from "../hooks/useActiveLink";
 import { useEffect, useRef } from "react";
+import { useActiveLink } from "../hooks/useActiveLink";
+import Container from "./Container";
+import TechStackSystem from "./TechStackSystem";
 
 const heroVariants: Variants = {
   hidden: (i) => ({
@@ -85,6 +86,14 @@ export default function About() {
           I specialize in crafting scalable, user-friendly, and visually
           appealing web applications using React.
         </motion.p>
+      </div>
+
+      <div className="mt-[84px] md:mt-[100px] mb-20 flex flex-col gap-8 items-center">
+        <h1 className="text-2xl font-bold ml-2 text-start w-full">
+          My Tech Stack:
+        </h1>
+
+        <TechStackSystem />
       </div>
     </Container>
   );
