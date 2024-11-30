@@ -5,6 +5,7 @@ import {
   useMotionValue,
   Variants,
 } from "framer-motion";
+import { useRef } from "react";
 import firebaseIcon from "../assets/firebase-icon.svg";
 import javascriptIcon from "../assets/javascript-icon.svg";
 import nextjsIcon from "../assets/nextjs-icon.svg";
@@ -56,6 +57,14 @@ const orbitVariants: Variants = {
 };
 
 export default function TechStackSystem() {
+  const orbitContainerRef = useRef<HTMLDivElement>(null);
+
+  // to evenly distribute the elements circularly
+  // inspired by (stolen from) https://stackoverflow.com/a/55212378
+  let angle = 360 - 90;
+  const dAngle = 360 / techStack.length;
+  const radius = orbitContainerRef.current?.clientWidth;
+
   const rotate = useMotionValue(0);
   const orbit = animate(rotate, [0, 360], {
     duration: 15,
@@ -73,12 +82,13 @@ export default function TechStackSystem() {
       <img
         src={javascriptIcon}
         alt="javascript icon"
-        className="absolute size-[100px] md:size-[250px] bg-foreground rounded-full border-2 border-background cursor-pointer"
+        className="absolute size-24 md:size-64 bg-foreground rounded-full border-2 border-background cursor-pointer"
         style={{ transformStyle: "preserve-3d" }}
       />
 
       {/* orbitting elements container */}
       <motion.div
+        ref={orbitContainerRef}
         className="absolute size-[300px] md:size-[700px]"
         style={{
           transformStyle: "preserve-3d",
@@ -86,13 +96,21 @@ export default function TechStackSystem() {
         }}
       >
         {techStack.map((val, i) => {
+          angle += dAngle;
+
           return (
+            // negative margins are there to center the element
+            // and the values comes form the size of the image
             <motion.div
               key={i}
-              className={`absolute ${val.position}`}
+              className={`absolute top-1/2 left-1/2 m-[calc(-4rem/2)] md:m-[calc(-7rem/2)]`}
               style={{
                 transformStyle: "preserve-3d",
-                transform: useMotionTemplate`rotateZ(-${rotate}deg) rotateX(-90deg) rotateZ(10deg)`,
+                // the transform order is important
+                // atleast upto the second rotate function
+                transform: useMotionTemplate`rotate(${angle}deg) translate(${
+                  radius! / 2
+                }px) rotate(-${angle}deg) rotateZ(-${rotate}deg) rotateX(-90deg) rotateZ(10deg)`,
               }}
             >
               <motion.div
@@ -112,7 +130,7 @@ export default function TechStackSystem() {
                 />
 
                 <motion.p
-                  className="text-center absolute top-1/2 left-1/2 min-w-24 md:min-w-32 p-2 border border-background rounded-lg bg-foreground text-background pointer-events-none"
+                  className="text-center absolute md:top-1/2 md:left-1/2 min-w-24 md:min-w-32 p-2 border-2 border-background rounded-lg bg-foreground text-background pointer-events-none"
                   variants={orbitVariants}
                   style={{ x: "-50%", y: "-50%" }}
                 >
