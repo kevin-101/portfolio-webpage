@@ -1,6 +1,8 @@
 import {
   animate,
+  AnimationPlaybackControls,
   motion,
+  useAnimate,
   useMotionTemplate,
   useMotionValue,
   Variants,
@@ -56,6 +58,49 @@ const orbitVariants: Variants = {
   },
 };
 
+function OrbitElement({
+  tech,
+  control,
+}: {
+  tech: (typeof techStack)[number];
+  control: AnimationPlaybackControls;
+}) {
+  const [scope, animate] = useAnimate();
+
+  return (
+    <motion.div
+      ref={scope}
+      className="relative"
+      initial="hidden"
+      whileHover="show"
+    >
+      <motion.img
+        src={tech.icon}
+        alt={`${tech.name} icon`}
+        className="size-16 md:size-28 p-2 bg-foreground rounded-lg text-background border-2 border-background cursor-pointer"
+        onMouseEnter={() => control.pause()}
+        onMouseLeave={() => control.play()}
+        onTapStart={() => {
+          control.pause();
+          animate("p", { scale: 1 });
+        }}
+        onTapCancel={() => {
+          control.play();
+          animate("p", { scale: 0 });
+        }}
+      />
+
+      <motion.p
+        className="text-center absolute md:top-1/2 md:left-1/2 min-w-24 md:min-w-32 p-2 border-2 border-background rounded-lg bg-foreground text-background pointer-events-none"
+        variants={orbitVariants}
+        style={{ x: "-50%", y: "-50%" }}
+      >
+        {tech.name}
+      </motion.p>
+    </motion.div>
+  );
+}
+
 export default function TechStackSystem() {
   const orbitContainerRef = useRef<HTMLDivElement>(null);
 
@@ -75,7 +120,7 @@ export default function TechStackSystem() {
 
   return (
     <div
-      className="relative flex justify-center items-center w-full min-h-[400px]"
+      className="relative flex justify-center items-center w-full min-h-[200px] md:min-h-[400px]"
       style={{ perspective: "2000px", transformStyle: "preserve-3d" }}
     >
       {/* center body */}
@@ -95,7 +140,7 @@ export default function TechStackSystem() {
           transform: useMotionTemplate`rotate3d(1, -0.2, 0, 80deg) rotateZ(${rotate}deg)`,
         }}
       >
-        {techStack.map((val, i) => {
+        {techStack.map((tech, i) => {
           angle += dAngle;
 
           return (
@@ -113,30 +158,7 @@ export default function TechStackSystem() {
                 }px) rotate(-${angle}deg) rotateZ(-${rotate}deg) rotateX(-90deg) rotateZ(10deg)`,
               }}
             >
-              <motion.div
-                className="relative"
-                initial="hidden"
-                whileTap="show"
-                whileHover="show"
-              >
-                <motion.img
-                  src={val.icon}
-                  alt={`${val.name} icon`}
-                  className="size-16 md:size-28 p-2 bg-foreground rounded-lg text-background border-2 border-background cursor-pointer"
-                  onMouseEnter={() => orbit.pause()}
-                  onMouseLeave={() => orbit.play()}
-                  onTapStart={() => orbit.pause()}
-                  onTapCancel={() => orbit.play()}
-                />
-
-                <motion.p
-                  className="text-center absolute md:top-1/2 md:left-1/2 min-w-24 md:min-w-32 p-2 border-2 border-background rounded-lg bg-foreground text-background pointer-events-none"
-                  variants={orbitVariants}
-                  style={{ x: "-50%", y: "-50%" }}
-                >
-                  {val.name}
-                </motion.p>
-              </motion.div>
+              <OrbitElement tech={tech} control={orbit} />
             </motion.div>
           );
         })}
