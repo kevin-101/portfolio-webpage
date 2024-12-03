@@ -67,11 +67,16 @@ export default function Projects() {
           My Projects:
         </motion.h2>
 
-        <div className="grid grid-cols-1 w-full gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 w-full gap-4">
           {projects.map((project, i) => {
             return (
               <HoverCard
                 key={project.title}
+                className={
+                  i % 4 === 0 || (i - 1) % 4 === 0
+                    ? "col-span-1"
+                    : "col-span-1 md:col-span-2"
+                }
                 custom={i + 1}
                 variants={projectVariants}
                 initial="hidden"
