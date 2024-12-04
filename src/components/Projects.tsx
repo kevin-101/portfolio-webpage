@@ -28,7 +28,7 @@ const projects = [
 const projectVariants: Variants = {
   hidden: (i) => ({
     opacity: 0,
-    x: i % 2 === 0 ? -200 : 200,
+    x: i % 2 === 0 ? 200 : -200,
   }),
   show: {
     opacity: 1,
