@@ -64,7 +64,7 @@ function CardContent({ contact }: { contact: (typeof contacts)[number] }) {
       <img
         src={contact.icon}
         alt={`${contact.name} Icon`}
-        className="size-[200px] flex-1"
+        className="size-[60%] flex-1"
       />
 
       <div className="flex justify-between items-center w-full">
