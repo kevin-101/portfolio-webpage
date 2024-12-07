@@ -57,7 +57,7 @@ function CardContent({ contact }: { contact: (typeof contacts)[number] }) {
   return (
     <motion.div
       ref={scope}
-      className="flex flex-col justify-end items-center p-4 min-h-[400px]"
+      className="flex flex-col justify-end items-center p-4 aspect-square"
       onHoverStart={bounce}
       onTap={bounce}
     >
@@ -100,7 +100,7 @@ export default function Contact() {
       <div className="flex flex-col gap-8 w-full mb-20">
         <h2 className="ml-2 text-2xl font-bold">Contact me:</h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {contacts.map((contact, i) => {
             return (
               <AuroraCard
