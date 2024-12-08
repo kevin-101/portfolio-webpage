@@ -58,7 +58,6 @@ function CardContent({ contact }: { contact: (typeof contacts)[number] }) {
     <motion.div
       ref={scope}
       className="flex flex-col justify-end items-center p-4 aspect-square"
-      onHoverStart={bounce}
       onTap={bounce}
     >
       <img
