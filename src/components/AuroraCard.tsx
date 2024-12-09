@@ -35,7 +35,7 @@ const AuroraCard = motion.create(
       return (
         <div
           ref={ref}
-          className="group relative rounded-lg border-2 border-foreground/10"
+          className="group relative rounded-lg"
           onMouseEnter={() => gradientAnimation.play()}
           onMouseLeave={() => gradientAnimation.pause()}
         >
@@ -45,7 +45,9 @@ const AuroraCard = motion.create(
               backgroundImage: useMotionTemplate`radial-gradient(${leftGradientSize}px at left bottom, ${color}, transparent 20%), radial-gradient(${middleGradientSize}px at bottom, ${color}, transparent 12%), radial-gradient(${rightGradientSize}px at right bottom, ${color}, transparent 20%)`,
             }}
           />
-          <motion.div className="-z-10 absolute -inset-0.5 rounded-lg backdrop-blur-3xl" />
+          {/* border given to this div to get around 
+          dissappearing border bug when given to parent */}
+          <div className="-z-10 absolute -inset-0.5 rounded-lg backdrop-blur-3xl border-2 border-foreground/10" />
 
           {children}
         </div>
