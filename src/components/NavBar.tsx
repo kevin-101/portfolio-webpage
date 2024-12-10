@@ -47,7 +47,7 @@ export default function NavBar() {
   return (
     <header className="z-10 sticky top-0 flex justify-center py-4 px-2 md:text-2xl">
       <motion.nav
-        className="flex gap-2 md:gap-6 py-1 px-1 overflow-hidden rounded-full border-2 border-white/15 bg-wihte/70 backdrop-blur-sm"
+        className="flex gap-2 md:gap-6 py-1 px-1 overflow-hidden rounded-full border-2 border-white/15 bg-background/30 backdrop-blur-sm"
         style={{ y }}
       >
         {navLinks.map((link, key) => (
