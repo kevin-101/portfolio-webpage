@@ -89,11 +89,7 @@ export default function Projects() {
 
                   <p className="w-full max-w-[800px]">{project.description}</p>
 
-                  <a
-                    href={project.url}
-                    target="_blank"
-                    className="text-lg cursor-pointer"
-                  >
+                  <a href={project.url} className="text-lg cursor-pointer">
                     Visit{" "}
                     <span className="inline-block opacity-0 -translate-x-5 group-hover:opacity-100 group-hover:translate-x-0 transition-[opacity_transform] duration-300">
                       <img
