@@ -15,7 +15,7 @@ const Container = forwardRef<HTMLElement, ContainerProps>(
         id={id}
         className={`${
           full && "min-h-[calc(100svh-84px)] md:min-h-[calc(100svh-100px)]"
-        } w-full max-w-[1300px] mx-auto px-4 scroll-m-[84px] md:scroll-m-[100px]`}
+        } w-full max-w-[900px] mx-auto px-4 scroll-m-[84px] md:scroll-m-[100px]`}
       >
         {/* 100svh-84px/100px is the min-height of the container,
         depending on the breakpoint and you subtract the height of the navbar twice,
@@ -29,7 +29,7 @@ const Container = forwardRef<HTMLElement, ContainerProps>(
         )}
       </section>
     );
-  }
+  },
 );
 
 export default Container;

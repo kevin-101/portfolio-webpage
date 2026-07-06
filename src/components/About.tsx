@@ -8,7 +8,7 @@ import {
 import { useEffect, useRef } from "react";
 import { useActiveLink } from "../hooks/useActiveLink";
 import Container from "./Container";
-import TechStackSystem from "./TechStackSystem";
+import TechStack from "./TechStack";
 
 const heroVariants: Variants = {
   hidden: (i) => ({
@@ -47,37 +47,34 @@ export default function About() {
 
   return (
     <Container ref={aboutRef} id="about" full center>
-      <div className="flex flex-col gap-10 w-full min-h-[inherit] justify-center">
-        <div className="flex flex-col gap-1 w-full">
-          <motion.h3
-            className="text-4xl font-bold text-gray-500"
-            custom={0}
-            variants={heroVariants}
-            initial="hidden"
-            animate="slideFadeIn"
-          >
-            Hi I'm,
-            <br />
-            <span className="inline-block mt-1">Kevin K Noel</span>
-          </motion.h3>
+      <div className="flex flex-col gap-5 w-full min-h-[inherit] justify-center">
+        <motion.h3
+          className="text-xl text-gray-500"
+          custom={0}
+          variants={heroVariants}
+          initial="hidden"
+          animate="slideFadeIn"
+        >
+          Hi, I'm Kevin K Noel
+        </motion.h3>
 
-          <motion.h1
-            className="text-6xl min-[412px]:text-7xl min-[600px]:text-8xl font-extrabold bg-clip-text text-transparent"
-            style={{
-              backgroundImage: `linear-gradient(to right, #3b3b3b, white 20%, #3b3b3b 95%)`,
-              backgroundPositionX: bgX,
-            }}
-            custom={1}
-            variants={heroVariants}
-            initial="hidden"
-            animate="slideFadeIn"
-          >
-            A React Developer
-          </motion.h1>
-        </div>
+        <motion.h1
+          className="text-[clamp(52px,8vw,88px)] min-[412px]:text-6xl font-bold bg-clip-text text-transparent"
+          style={{
+            backgroundImage: `linear-gradient(to right, #3b3b3b, white 20%, #3b3b3b 95%)`,
+            backgroundPositionX: bgX,
+          }}
+          custom={1}
+          variants={heroVariants}
+          initial="hidden"
+          animate="slideFadeIn"
+        >
+          A React <br />
+          Developer
+        </motion.h1>
 
         <motion.p
-          className="text-2xl font-bold text-gray-500 max-w-[650px]"
+          className="text-xl text-gray-500 max-w-[650px]"
           custom={2}
           variants={heroVariants}
           initial="hidden"
@@ -89,11 +86,17 @@ export default function About() {
       </div>
 
       <div className="mt-[84px] md:mt-[100px] mb-20 flex flex-col gap-8 items-center">
-        <h1 className="text-2xl font-bold ml-2 text-start w-full">
-          My Tech Stack:
-        </h1>
+        <div className="flex flex-col gap-2 w-full">
+          <p className="text-cyan-400 text-start w-full">
+            // TOOLS OF THE TRADE
+          </p>
+          <h1 className="text-2xl font-bold text-start w-full">
+            My Tech Stack
+          </h1>
+        </div>
 
-        <TechStackSystem />
+        {/* <TechStackSystem /> */}
+        <TechStack />
       </div>
     </Container>
   );
