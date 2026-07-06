@@ -84,7 +84,7 @@ function TechStack() {
       initial="hidden"
       whileInView="show"
       viewport={{ once: true }}
-      className="grid grid-cols-5 gap-3 w-full"
+      className="grid grid-cols-3 md:grid-cols-5 gap-3 w-full"
     >
       {techStack.map(({ icon, name }) => (
         <motion.div
